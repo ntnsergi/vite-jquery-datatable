@@ -2,7 +2,8 @@ import './style.css';
 import DataTable from 'datatables.net-dt';
 import 'datatables.net-dt/css/dataTables.dataTables.css';
 
-const API_URL = "https://raw.githubusercontent.com/PlataformasWeb-P-AA2026/api-demo/main/db.json"
+// 1. Cambiamos la URL de la API
+const API_URL = "https://dummyjson.com/products";
 
 async function cargarDatos() {
   try {
@@ -15,12 +16,12 @@ async function cargarDatos() {
     const datos = await respuesta.json();
 
     new DataTable('#tabla-posts', {
-      data: datos,
+      data: datos.products, 
       columns: [
-        { data: 'AMIE' },
-        { data: 'Nombre-Educativa' },
-        { data: 'Canton' },
-        { data: 'Parroquia' }
+        { data: 'id' },
+        { data: 'title' },
+        { data: 'category' },
+        { data: 'price' }
       ],
       pageLength: 10,
       language: {
